@@ -9,20 +9,20 @@ const Navbar = () => {
                 <NavLink to="/" className={styles.brand}>
                     Mini <span>Blog</span>
                 </NavLink>
-           
-            <ul className={styles.links_list}>
-                <li>
-                    <NavLink to="/">
+
+                <ul className={styles.links_list}>
+                    <li>
+                        <NavLink to="/" className={({ isActive })=>(isActive ? styles.active : "")}>
                         <span>Home</span>
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to="/about">
+                    <NavLink to="/about" className={({ isActive })=>(isActive ? styles.active : "")}>
                         <span>About</span>
                     </NavLink>
                 </li>
             </ul>
-            </nav>
+        </nav>
         </>
     )
 }

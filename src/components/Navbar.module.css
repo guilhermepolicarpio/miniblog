@@ -17,9 +17,15 @@
 
 .links_list{
     display: flex;
-    list-style: none
+    list-style: none;
+    margin-right: 1em;
 }
 
 .links_list li a {
-    padding: .4em .6em
+    padding: .4em .6em;
+}
+
+.active{
+    background-color: #000;
+    color: #fff;
 }
