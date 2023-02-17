@@ -9,13 +9,13 @@ const Register = () => {
             <p>Create your user and share your stories</p>
             <form>
                 <label>
-                    <span>Name: </span>
+                    <span>Name </span>
                     <input
                         type="text"
                         name="displayName"
                         required
                         placeholder="Username" />
-                    <span>E-mail: </span>
+                    <span>E-mail </span>
                     <input
                         type="email"
                         name="email"
