@@ -48,13 +48,13 @@ function App() {
                 element={!user ? <Login /> : <Navigate to="/" />} />
               <Route
                 path="/register"
-                element={!user ? <Login /> : <Navigate to="/" />} />
+                element={!user ? <Register /> : <Navigate to="/" />} />
               <Route
                 path="/posts/create"
-                element={!user ? <Login /> : <Navigate to="/login" />} />
+                element={user ? <CreatePost /> : <Navigate to="/login" />} />
              <Route
                 path="/dashboard"
-                element={!user ? <Login /> : <Navigate to="/login" />} />
+                element={user ? <Dashboard /> : <Navigate to="/login" />} />
             </Routes>
           </div>
           <Footer />
