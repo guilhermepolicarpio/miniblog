@@ -36,17 +36,25 @@ function App() {
   }
   return (
     <div className="App">
-      <AuthProvider value = { {user} }>
+      <AuthProvider value={{ user }}>
         <BrowserRouter>
           <Navbar />
           <div className='="container'>
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/posts/create" element={<CreatePost />} />
-              <Route path="/dashboard" element={<Dashboard />} />
+              <Route
+                path="/login"
+                element={!user ? <Login /> : <Navigate to="/" />} />
+              <Route
+                path="/register"
+                element={!user ? <Login /> : <Navigate to="/" />} />
+              <Route
+                path="/posts/create"
+                element={!user ? <Login /> : <Navigate to="/login" />} />
+             <Route
+                path="/dashboard"
+                element={!user ? <Login /> : <Navigate to="/login" />} />
             </Routes>
           </div>
           <Footer />
