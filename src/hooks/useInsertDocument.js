@@ -4,50 +4,53 @@ import { collection, addDoc, Timestamp } from "firebase/firestore";
 
 const initialState = {
     loading: null,
-    error: null
+    error: null,
 }
 
 const insertReducer = (state, action) => {
-    switch (action, type) {
+
+    switch (action.type) {
+        
         case "LOADING":
-            return { loading: true, error: null }
-
+            return { loading: true, error: null };
         case "INSERTED_DOC":
-            return { loading: false, error: null }
+            return { loading: false, error: null };
         case "ERROR":
-            return { loading: false, error: action.payload }
+            return { loading: false, error: action.payload };
         default:
-            return state
+            return state;
     }
-}
+};
 
-export const useInserDocument = (docCollection) => {
+export const useInsertDocument = (docCollection) => {
     const [response, dispatch] = useReducer(insertReducer, initialState);
 
-    const [cancelled, setCancelled] = useState(false)
+    const [cancelled, setCancelled] = useState(false);
 
     const checkCancelBeforeDispatch = (action) => {
         if (!cancelled) {
             dispatch(action)
         }
-    }
+    };
 
     const insertDocument = async (document) => {
-        const checkCancelBeforeDispatch = ({ type: "LOADING" })
-
+        checkCancelBeforeDispatch({ type: "LOADING" })
         try {
-            const newDocument = { ...document, createdAt: Timestamp.now() }
+            const newDocument = { ...document, createdAt: Timestamp.now() };
             const insertedDocument = await addDoc(
                 collection(db, docCollection),
                 newDocument
             )
 
+            console.log(insertedDocument)
+
             checkCancelBeforeDispatch({
                 type: "INSERTED_DOC",
                 payload: insertedDocument
-            })
+            });
         }
         catch (error) {
+            console.log("erro")
             checkCancelBeforeDispatch({
                 type: "ERROR",
                 payload: error.message
@@ -55,9 +58,10 @@ export const useInserDocument = (docCollection) => {
         }
 
     }
-    useEffect(()=>{
-        return()=> setCancelled(true);
-    },[])
+    useEffect(() => {
+        return () => setCancelled(true);
+    }, []);
 
-    return { insertDocument, response }
+    console.log(response)
+    return { insertDocument, response };
 }
