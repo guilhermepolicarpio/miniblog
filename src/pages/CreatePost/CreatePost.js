@@ -19,7 +19,7 @@ const CreatePost = () => {
 
     const navigate = useNavigate();
 
-    console.log(user)
+    console.log(user);
 
     const handleSubmit = (e) => {
         e.preventDefault();
