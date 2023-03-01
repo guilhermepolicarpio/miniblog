@@ -1,10 +1,7 @@
-import { db } from "../firebase/config";
-import { useState, useEffect } from 'react'
-import {
-    doc,
-    getDoc
+import { doc, getDoc } from 'firebase/firestore';
+import { useEffect, useState } from 'react';
 
-} from "firebase/firestore";
+import { db } from '../firebase/config';
 
 export const useFetchDocument = (docCollection, id) => {
 

@@ -1,13 +1,7 @@
-import { db } from "../firebase/config";
-import { useState, useEffect } from 'react'
-import {
-    collection,
-    query,
-    orderBy,
-    onSnapshot,
-    where,
+import { collection, onSnapshot, orderBy, query, where } from 'firebase/firestore';
+import { useEffect, useState } from 'react';
 
-} from "firebase/firestore";
+import { db } from '../firebase/config';
 
 export const useFetchDocuments = (docCollection, search = null, uid = null) => {
 
@@ -50,7 +44,7 @@ else{
             }
             loadData();
 
-        }, [docCollection, documents, search, uid, cancelled]);
+        }, [docCollection, search, uid, cancelled]);
 
     useEffect(() => {
         return () => setCancelled(true);
