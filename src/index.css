@@ -105,6 +105,7 @@ textarea::placeholder {
 
 button[disabled] {
   background-color: #aaa;
+
 }
 
 .container .error {
