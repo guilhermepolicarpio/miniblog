@@ -1,6 +1,7 @@
-import { useState, useEffect, useReducer } from "react";
-import { db } from "../firebase/config"
-import { collection, addDoc, Timestamp } from "firebase/firestore";
+import { addDoc, collection, Timestamp } from 'firebase/firestore';
+import { useEffect, useReducer, useState } from 'react';
+
+import { db } from '../firebase/config';
 
 const initialState = {
     loading: null,
@@ -10,7 +11,7 @@ const initialState = {
 const insertReducer = (state, action) => {
 
     switch (action.type) {
-        
+
         case "LOADING":
             return { loading: true, error: null };
         case "INSERTED_DOC":

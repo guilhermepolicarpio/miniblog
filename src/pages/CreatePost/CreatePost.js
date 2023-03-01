@@ -58,7 +58,7 @@ const CreatePost = () => {
             <p> Write about anything you want and share your knowledge</p>
             <form onSubmit={handleSubmit}>
                 <label>
-                    <span>title: </span>
+                    <span>Title: </span>
                     <input
                         type="text"
                         name="title"
@@ -69,7 +69,7 @@ const CreatePost = () => {
                     />
                 </label>
                 <label>
-                    <span>image: </span>
+                    <span>Image: </span>
                     <input
                         type="text"
                         name="image"
@@ -82,7 +82,6 @@ const CreatePost = () => {
                 <label>
                     <span>Content: </span>
                     <textarea
-
                         name="body"
                         required
                         placeholder="Insert post content"

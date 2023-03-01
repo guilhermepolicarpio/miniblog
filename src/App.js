@@ -1,24 +1,22 @@
 import './App.css';
 
 import { onAuthStateChanged } from 'firebase/auth';
+import { useEffect, useState } from 'react';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
-import { useState, useEffect } from 'react';
-import { useAuthentication } from './hooks/useAuthentication';
-
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-
-import Home from './pages/Home/Home';
-import About from './pages/About/About';
-import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import Login from './pages/Login/Login.js';
-import Register from './pages/Register/Register.js';
-
+import Navbar from './components/Navbar';
 import { AuthProvider } from './context/AuthContext';
+import { useAuthentication } from './hooks/useAuthentication';
+import About from './pages/About/About';
 import CreatePost from './pages/CreatePost/CreatePost';
 import Dashboard from './pages/Dashboard/Dashboard';
-import Search from './pages/Search/Search';
+import EditPost from './pages/EditPost/EditPost';
+import Home from './pages/Home/Home';
+import Login from './pages/Login/Login.js';
 import Post from './pages/Post/Post';
+import Register from './pages/Register/Register.js';
+import Search from './pages/Search/Search';
 
 function App() {
 
@@ -53,6 +51,9 @@ function App() {
               <Route
                 path="/register"
                 element={!user ? <Register /> : <Navigate to="/" />} />
+                <Route
+                path="/posts/edit/:id"
+                element={user ? <EditPost /> : <Navigate to="/login" />} />
               <Route
                 path="/posts/create"
                 element={user ? <CreatePost /> : <Navigate to="/login" />} />
