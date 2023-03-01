@@ -18,7 +18,7 @@ const Dashboard = () => {
         return <p>Loading...</p>
     }
     return (
-        <div>
+        <div className={styles.dashboard}>
             <h2>Dashboard</h2>
             <p>Manage your posts</p>
             {posts && posts.length === 0 ? (
@@ -31,14 +31,14 @@ const Dashboard = () => {
             ) : (
 
                 <>
-                    <div>
+                    <div className={styles.post_header}>
                         <span>Title</span>
                         <span>Actions</span>
                     </div>
                     {posts && posts.map((post) =>
-                        <div key={post.div}>
+                        <div key={post.div} className={styles.post_row}>
                             <p>{post.title}</p>
-                            <div>
+                            <div className={styles.actions}>
                                 <Link to={`/posts/${post.id}`} className="btn btn-outline">
                                     See
                                 </Link>
@@ -46,7 +46,7 @@ const Dashboard = () => {
                                     Edit
                                 </Link>
                                 <button onClick={() => deleteDocument(post.id)}
-                                    className="btn btn-outline btn-danger">
+                                    className="btn btn-outline">
                                     Delete
                                 </button>
                             </div>
